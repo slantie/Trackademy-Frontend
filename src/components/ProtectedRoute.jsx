@@ -1,6 +1,7 @@
 import React from "react";
 import { showToast } from "../utils/toast";
 import { Navigate, useLocation } from "react-router-dom";
+import { authService } from "../services/authService";
 
 const ProtectedRoute = ({
   children,
@@ -10,26 +11,18 @@ const ProtectedRoute = ({
 }) => {
   const location = useLocation();
 
-  // Check authentication status
+  // Check authentication status using authService
   const getAuthData = () => {
     try {
-      const token =
-        localStorage.getItem("authToken") ||
-        sessionStorage.getItem("authToken");
-      const userData =
-        localStorage.getItem("user") || sessionStorage.getItem("user");
-      const authStatus =
-        localStorage.getItem("isAuthenticated") ||
-        sessionStorage.getItem("isAuthenticated");
+      const token = authService.getToken();
+      const user = authService.getUser();
+      const isAuthenticated = authService.isAuthenticated();
 
-      if (token && userData && authStatus === "true") {
-        return {
-          isAuthenticated: true,
-          user: JSON.parse(userData),
-          token,
-        };
-      }
-      return { isAuthenticated: false, user: null, token: null };
+      return {
+        isAuthenticated,
+        user,
+        token,
+      };
     } catch (error) {
       console.error("Error checking auth status:", error);
       return { isAuthenticated: false, user: null, token: null };

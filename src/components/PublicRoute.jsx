@@ -1,24 +1,10 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
+import { authService } from "../services/authService";
 
-const PublicRoute = ({ children, redirectPath = "/" }) => {
-  // Check if user is already authenticated
-  const getAuthData = () => {
-    try {
-      const token =
-        localStorage.getItem("authToken") ||
-        sessionStorage.getItem("authToken");
-      const authStatus =
-        localStorage.getItem("isAuthenticated") ||
-        sessionStorage.getItem("isAuthenticated");
-      return token && authStatus === "true";
-    } catch (error) {
-      console.error("Error checking auth status:", error);
-      return false;
-    }
-  };
-
-  const isAuthenticated = getAuthData();
+const PublicRoute = ({ children, redirectPath = "/dashboard" }) => {
+  // Check if user is already authenticated using authService
+  const isAuthenticated = authService.isAuthenticated();
 
   // If user is authenticated, redirect them away from login/signup pages
   if (isAuthenticated) {

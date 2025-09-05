@@ -43,14 +43,15 @@ export const useLogin = () => {
     onSuccess: (data) => {
       console.log("🎯 Login mutation successful:", data);
 
-      // Save token to localStorage
+      // Save token and user to localStorage
       if (data.token) {
         authService.saveToken(data.token);
       }
 
-      // Set user profile data in cache if available
-      if (data.user) {
-        queryClient.setQueryData(authKeys.profile(), data.user);
+      const user = data.data?.user || data.user;
+      if (user) {
+        authService.saveUser(user);
+        queryClient.setQueryData(authKeys.profile(), user);
       }
 
       // Optionally invalidate and refetch user profile

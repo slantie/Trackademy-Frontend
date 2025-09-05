@@ -2,7 +2,7 @@ import { Github, Linkedin, Heart, ArrowUp } from "lucide-react";
 
 function Footer() {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -22,7 +22,6 @@ function Footer() {
                 </div>
                 <span className="font-medium">GitHub</span>
               </a>
-              
               <a
                 href="https://linkedin.com/in/kandarpgajjar"
                 target="_blank"
@@ -36,16 +35,11 @@ function Footer() {
               </a>
             </div>
           </div>
-
           <div className="flex items-center space-x-2">
-            <span className="text-light-muted-text dark:text-dark-muted-text">Made with</span>
-            <Heart className="w-4 h-4 text-red-400 animate-pulse" />
-            <span className="text-light-muted-text dark:text-dark-muted-text">by</span>
-            <span className="font-bold text-light-highlight dark:text-dark-highlight">
-              Slantie
+            <span className="text-light-muted-text dark:text-dark-muted-text">
+              © 2025 Trackademy. All rights reserved.
             </span>
           </div>
-
           <div className="flex items-center space-x-4">
             <button
               onClick={scrollToTop}

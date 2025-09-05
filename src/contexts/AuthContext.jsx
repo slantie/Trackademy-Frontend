@@ -18,15 +18,30 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const initializeAuth = async () => {
       const token = authService.getToken();
+      const user = authService.getUser();
+      const isAuth = authService.isAuthenticated();
 
-      if (token) {
+      if (token && isAuth) {
         try {
-          const response = await getUserProfile();
-          setAuthState({
-            isAuthenticated: true,
-            user: response.data?.user || response.user || response,
-            loading: false,
-          });
+          // If we have user data in localStorage, use it first
+          if (user) {
+            setAuthState({
+              isAuthenticated: true,
+              user: user,
+              loading: false,
+            });
+          } else {
+            // Otherwise, fetch from API
+            const response = await getUserProfile();
+            const fetchedUser =
+              response.data?.user || response.user || response;
+            authService.saveUser(fetchedUser);
+            setAuthState({
+              isAuthenticated: true,
+              user: fetchedUser,
+              loading: false,
+            });
+          }
         } catch (error) {
           console.error(error);
           authService.removeToken();
@@ -51,11 +66,25 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (identifier, password) => {
     try {
+      console.log("Login attempt started...");
       const response = await loginUser({ identifier, password });
+      console.log("Login response received:", response);
+
       const token = response.token;
       const user = response.data?.user || response.user;
 
+      console.log("Extracted token:", token);
+      console.log("Extracted user:", user);
+
+      if (!token || !user) {
+        console.error("Missing token or user data in response");
+        return false;
+      }
+
+      // Save token and user data to localStorage
       authService.saveToken(token);
+      authService.saveUser(user);
+
       queryClient.setQueryData(authKeys.profile(), user);
 
       setAuthState({
@@ -64,6 +93,7 @@ export const AuthProvider = ({ children }) => {
         loading: false,
       });
 
+      console.log("Login successful, auth state updated");
       return true;
     } catch (error) {
       console.error("Login failed:", error.response?.data || error.message);

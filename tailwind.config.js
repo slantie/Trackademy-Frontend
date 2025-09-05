@@ -1,52 +1,62 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  darkMode: "class",
+/* eslint-disable no-undef */
+module.exports = {
+  darkMode: ["class"],
+  content: [
+    "./pages/**/*.{js,jsx}",
+    "./components/**/*.{js,jsx}",
+    "./app/**/*.{js,jsx}",
+    "./src/**/*.{js,jsx}",
+  ],
+  prefix: "",
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       colors: {
-        "primary":{
-          "main": "#f56565",
-          "light": "#ff7070",
-          "lighter": "#fc6f6f",
-          "dark": "#",
-          "darker": "#"
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
         },
-
-        "dark": {
-          "text": "#DFDFD6",
-          "background": "#1B1B1F",
-          "highlight": "#fc6f6f",
-          "muted": {
-            "text": "#FFFFFF",
-            "background": "#202127",
-          },
-          "noisy":{
-            "text": "#98989F",
-            "background": "#161618",
-          },
-          "hover": "#414853",
-          "secondary": "#32363F",
-          "tertiary": "#98989F"
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
         },
-
-        "light": {
-          "text": "#3C3C43",
-          "background": "#FFFFFF",
-          "highlight": "#F56565",
-          "muted": {
-            "text": "#67676C",
-            "background": "#F6F6F7",
-          },
-          "noisy":{
-            "text": "#67676C",
-            "background": "#C2C2C4",
-          },
-          "hover": "#E4E4E9",
-          "secondary": "#EBEBEF",
-          "tertiary": "#98989F"
-        }
-
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
         sans: [
@@ -67,7 +77,21 @@ export default {
           '"Noto Color Emoji"',
         ],
       },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
