@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-/* eslint-disable no-undef */
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -60,7 +59,7 @@ module.exports = {
       },
       fontFamily: {
         sans: [
-          "Inter",
+          '"DM Sans"',
           "ui-sans-serif",
           "system-ui",
           "-apple-system",
@@ -79,12 +78,20 @@ module.exports = {
       },
       keyframes: {
         "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+          from: {
+            height: "0",
+          },
+          to: {
+            height: "var(--radix-accordion-content-height)",
+          },
         },
         "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0",
+          },
         },
       },
       animation: {
@@ -93,5 +100,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: ["tailwindcss-animate"],
 };

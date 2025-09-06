@@ -29,9 +29,9 @@ function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="bg-light-muted-background dark:bg-dark-muted-background p-2 rounded-lg border-2 border-light-muted-text/20 hover:border-light-highlight dark:hover:border-dark-highlight dark:border-dark-muted-text/20"
+      className="bg-muted p-2 rounded-lg border-2 border-light-muted-text/20 hover:border-light-highlight dark:hover:border-dark-highlight dark:border-dark-muted-text/20"
     >
-      {isDarkMode ? <Sun size={20} /> : <Moon size={20} className="text-light-text dark:text-dark-text" />}
+      {isDarkMode ? <Sun size={20} /> : <Moon size={20} className="text-foreground" />}
     </button>
   );
 }

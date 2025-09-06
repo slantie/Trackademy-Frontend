@@ -45,9 +45,9 @@ const ResetPasswordDialog = ({
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4 py-4">
       <div className="text-center">
-        <p className="text-sm text-light-muted-text dark:text-dark-muted-text">
+        <p className="text-sm text-muted-foreground">
           Set a new password for{" "}
-          <span className="font-bold text-light-text dark:text-dark-text">
+          <span className="font-bold text-foreground">
             {faculty?.fullName}
           </span>
           .

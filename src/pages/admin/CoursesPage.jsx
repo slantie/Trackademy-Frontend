@@ -88,7 +88,7 @@ const CoursesPage = () => {
           <div className="flex flex-col">
             <span>Div: {row.division?.name || "N/A"}</span>
             {row.batch && (
-              <span className="text-xs text-light-muted-text dark:text-dark-muted-text">
+              <span className="text-xs text-muted-foreground">
                 Batch: {row.batch}
               </span>
             )}

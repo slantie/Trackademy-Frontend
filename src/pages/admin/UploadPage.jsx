@@ -53,12 +53,12 @@ const UploadCard = ({
   return (
     <div className="bg-background border border-border rounded-xl shadow-lg p-6 flex flex-col h-full">
       <div className="flex items-center space-x-4 mb-4">
-        <div className="p-3 bg-light-highlight/10 dark:bg-dark-highlight/10 rounded-lg text-light-highlight dark:text-dark-highlight">
+        <div className="p-3 bg-primary/10 rounded-lg text-primary">
           {icon}
         </div>
         <div>
           <h3 className="text-lg font-bold text-foreground">{title}</h3>
-          <p className="text-sm text-light-muted-text dark:text-dark-muted-text">
+          <p className="text-sm text-muted-foreground">
             {description}
           </p>
         </div>
@@ -269,7 +269,7 @@ const UploadPage = () => {
     <div className="container mx-auto py-10">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-foreground">Bulk Data Upload</h1>
-        <p className="text-light-muted-text dark:text-dark-muted-text mt-1">
+        <p className="text-muted-foreground mt-1">
           Streamline data entry by uploading Excel files. Download templates to
           ensure correct formatting.
         </p>

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import {
   useGetAcademicYears,
   useDeleteAcademicYear,
@@ -47,7 +47,7 @@ const AcademicYearsPage = () => {
     setIsAlertOpen(true);
   };
 
-  const handleActivate = (yearId) => {
+  const handleActivate = useCallback((yearId) => {
     activateMutation.mutate(yearId, {
       onSuccess: () =>
         showToast.success("Academic Year activated successfully!"),
@@ -56,7 +56,7 @@ const AcademicYearsPage = () => {
           err.response?.data?.message || "Failed to activate year."
         ),
     });
-  };
+  }, [activateMutation]);
 
   const confirmDelete = () => {
     deleteMutation.mutate(selectedYear.id, {
@@ -113,7 +113,7 @@ const AcademicYearsPage = () => {
         ),
       },
     ],
-    [activateMutation.isPending]
+    [activateMutation.isPending, handleActivate]
   );
 
   if (isLoading)

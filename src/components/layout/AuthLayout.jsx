@@ -2,7 +2,7 @@ import React from "react";
 
 function AuthLayout({ children }) {
   return (
-    <div className="min-h-screen bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text">
+    <div className="min-h-screen bg-background text-foreground text-foreground">
       <main className="min-h-screen flex items-center justify-center">
         {children}
       </main>

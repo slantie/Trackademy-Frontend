@@ -19,6 +19,12 @@ import StudentsPage from "./pages/admin/StudentsPage";
 import DivisionsPage from "./pages/admin/DivisionsPage";
 import UploadPage from "./pages/admin/UploadPage";
 import DashboardHub from "./pages/Dashboard";
+import AssignmentsPage from "./pages/faculty/AssignmentsPage";
+import AttendancePage from "./pages/faculty/AttendancePage";
+import ExamsPage from "./pages/admin/ExamsPage";
+import ExamResultsPage from "./pages/admin/ExamResultsPage";
+import StudentAssignmentsPage from "./pages/student/AssignmentsPage";
+import ResultsPage from "./pages/student/ResultsPage";
 
 // Route Guards
 import { Role } from "./constants/roles";
@@ -28,6 +34,10 @@ import ProtectedRoute from "./components/ProtectedRoute";
 // Toast Provider
 import ToastProvider from "./providers/ToastProvider";
 import Error from "./components/Error";
+import CoursesPage from "./pages/admin/CoursesPage";
+import CertificatesPage from "./pages/student/CertificatesPage";
+import StudentInternshipsPage from "./pages/student/InternshipsPage";
+import PublicStudentProfilePage from "./pages/PublicStudentProfilePage";
 
 function App() {
   return (
@@ -76,7 +86,7 @@ function App() {
         />
 
         <Route
-          path="/admin/colleges"
+          path="/admin/college"
           element={
             <ProtectedRoute roles={[Role.ADMIN]}>
               <Layout>
@@ -86,7 +96,7 @@ function App() {
           }
         />
         <Route
-          path="/admin/departments"
+          path="/admin/department"
           element={
             <ProtectedRoute roles={[Role.ADMIN]}>
               <Layout>
@@ -156,6 +166,16 @@ function App() {
           }
         />
         <Route
+          path="/admin/course"
+          element={
+            <ProtectedRoute roles={[Role.ADMIN]}>
+              <Layout>
+                <CoursesPage />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/admin/upload"
           element={
             <ProtectedRoute roles={[Role.ADMIN]}>
@@ -165,6 +185,104 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        <Route
+          path="/admin/exam"
+          element={
+            <ProtectedRoute roles={[Role.ADMIN]}>
+              <Layout>
+                <ExamsPage />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/exam/:examId/results"
+          element={
+            <ProtectedRoute roles={[Role.ADMIN]}>
+              <Layout>
+                <ExamResultsPage />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Faculty Routes */}
+        <Route
+          path="/faculty/assignment"
+          element={
+            <ProtectedRoute roles={[Role.FACULTY, Role.ADMIN]}>
+              <Layout>
+                <AssignmentsPage />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/faculty/attendance"
+          element={
+            <ProtectedRoute roles={[Role.FACULTY, Role.ADMIN]}>
+              <Layout>
+                <AttendancePage />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+
+
+        {/* Student Routes */}
+        <Route
+          path="/student/:id"
+          element={
+            <Layout>
+              <PublicStudentProfilePage />
+            </Layout>
+          }
+        />
+
+        {/* Student Only Routes */}
+        <Route
+          path="/student/assignment"
+          element={
+            <ProtectedRoute roles={[Role.STUDENT]}>
+              <Layout>
+                <StudentAssignmentsPage />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/student/result"
+          element={
+            <ProtectedRoute roles={[Role.STUDENT]}>
+              <Layout>
+                <ResultsPage />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/student/certificate"
+          element={
+            <ProtectedRoute roles={[Role.STUDENT]}>
+              <Layout>
+                <CertificatesPage />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/student/internship"
+          element={
+            <ProtectedRoute roles={[Role.STUDENT]}>
+              <Layout>
+                <StudentInternshipsPage />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+
+        
 
         {/* Fallback 404 Route */}
         <Route

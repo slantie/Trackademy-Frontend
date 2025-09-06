@@ -4,11 +4,9 @@ import Footer from "./Footer";
 
 function Layout({ children }) {
   return (
-    <div className="flex flex-col min-h-screen bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text">
-      <Header />
-      <main className="flex-1 container mx-auto p-4 flex items-center justify-center">
-        {children}
-      </main>
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
+      <Header className="sticky top-0 z-50" />
+      <main className="flex-1 p-6">{children}</main>
       <Footer />
     </div>
   );

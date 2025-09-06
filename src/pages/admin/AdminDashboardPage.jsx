@@ -20,17 +20,17 @@ const StatCard = ({ title, value, icon: Icon, change, subtitle }) => {
   return (
     <Card className="hover:border-light-highlight/50 dark:hover:border-dark-highlight/50 transition-all hover:shadow-lg">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm font-medium text-light-muted-text dark:text-dark-muted-text">
+        <CardTitle className="text-sm font-medium text-muted-foreground">
           {title}
         </CardTitle>
-        <Icon className="h-4 w-4 text-light-muted-text dark:text-dark-muted-text" />
+        <Icon className="h-4 w-4 text-muted-foreground" />
       </CardHeader>
       <CardContent>
-        <div className="text-2xl font-bold text-light-text dark:text-dark-text">
+        <div className="text-2xl font-bold text-foreground">
           {value}
         </div>
-        <p className="text-xs text-light-muted-text dark:text-dark-muted-text">
-          {subtitle}
+        <p className="text-xs text-muted-foreground">
+          {subtitle} {change}
         </p>
       </CardContent>
     </Card>
@@ -82,7 +82,7 @@ const AnalyticsOverview = ({ passCount, failCount, avgSpi, avgCpi }) => {
         {metrics.map((metric) => (
           <div
             key={metric.title}
-            className="bg-light-muted-background/50 dark:bg-dark-muted-background/50 p-4 rounded-lg border border-light-muted-text/10 dark:border-dark-muted-text/10"
+            className="bg-muted/50 p-4 rounded-lg border border-border/20"
           >
             <div
               className={`flex items-center justify-center h-10 w-10 rounded-full bg-opacity-20 mb-4 ${metric.color.replace(
@@ -94,13 +94,13 @@ const AnalyticsOverview = ({ passCount, failCount, avgSpi, avgCpi }) => {
                 className: `h-5 w-5 ${metric.color}`,
               })}
             </div>
-            <p className="text-sm text-light-muted-text dark:text-dark-muted-text">
+            <p className="text-sm text-muted-foreground">
               {metric.title}
             </p>
             <p className={`text-2xl font-bold ${metric.color}`}>
               {metric.value}
             </p>
-            <p className="text-xs text-light-muted-text dark:text-dark-muted-text">
+            <p className="text-xs text-muted-foreground">
               {metric.rate}
             </p>
           </div>
@@ -124,10 +124,10 @@ const AdminDashboardPage = () => {
   return (
     <div className="container mx-auto py-10">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-light-text dark:text-dark-text">
+        <h1 className="text-3xl font-bold text-foreground">
           Admin Dashboard
         </h1>
-        <p className="text-light-muted-text dark:text-dark-muted-text mt-1">
+        <p className="text-muted-foreground mt-1">
           An overview of the entire institution's metrics and performance.
         </p>
       </div>

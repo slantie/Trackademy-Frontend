@@ -363,23 +363,23 @@ function Setup() {
   );
 
   return (
-    <div className="min-h-screen bg-light-background dark:bg-dark-background">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Enhanced Hero Section */}
-      <div className="bg-gradient-to-r from-light-highlight/5 to-light-highlight/10 dark:from-dark-highlight/5 dark:to-dark-highlight/10 border-b border-light-muted-text/20 dark:border-dark-muted-text/20">
+      <div className="bg-gradient-to-r from-light-highlight/5 to-light-highlight/10 dark:from-dark-highlight/5 dark:to-dark-highlight/10 border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
             <div className="flex items-center justify-center mb-6">
-              <div className="p-4 bg-light-highlight dark:bg-dark-highlight rounded-2xl shadow-lg">
+              <div className="p-4 bg-primary rounded-2xl shadow-lg">
                 <Terminal className="w-12 h-12 text-white" />
               </div>
             </div>
 
-            <h1 className="text-5xl font-bold text-light-text dark:text-dark-text mb-4">
+            <h1 className="text-5xl font-bold text-foreground mb-4">
               Setup Guide
             </h1>
-            <p className="text-xl text-light-muted-text dark:text-dark-muted-text max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
               Complete setup instructions for{" "}
-              <span className="text-light-highlight dark:text-dark-highlight font-semibold">
+              <span className="text-primary font-semibold">
                 {projectName}
               </span>
             </p>
@@ -387,20 +387,20 @@ function Setup() {
             {/* Progress Bar */}
             <div className="max-w-md mx-auto mb-6">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium text-light-text dark:text-dark-text">
+                <span className="text-sm font-medium text-foreground">
                   Progress
                 </span>
-                <span className="text-sm font-medium text-light-highlight dark:text-dark-highlight">
+                <span className="text-sm font-medium text-primary">
                   {completionPercentage}%
                 </span>
               </div>
-              <div className="w-full bg-light-muted-background dark:bg-dark-muted-background rounded-full h-3">
+              <div className="w-full bg-muted rounded-full h-3">
                 <div
                   className="bg-gradient-to-r from-light-highlight to-light-highlight/80 dark:from-dark-highlight dark:to-dark-highlight/80 h-3 rounded-full transition-all duration-500 ease-out"
                   style={{ width: `${completionPercentage}%` }}
                 ></div>
               </div>
-              <p className="text-xs text-light-muted-text dark:text-dark-muted-text mt-2">
+              <p className="text-xs text-muted-foreground mt-2">
                 {completedSteps.size} of {setupSteps.length} steps completed
               </p>
             </div>
@@ -409,7 +409,7 @@ function Setup() {
             <div className="flex items-center justify-center space-x-8 text-sm">
               <div className="flex items-center space-x-1">
                 <HeartPulse className="w-4 h-4 text-green-500" />
-                <span className="text-light-muted-text dark:text-dark-muted-text">
+                <span className="text-muted-foreground">
                   Frontend:{" "}
                 </span>
                 <span className="text-green-500">Active</span>
@@ -436,9 +436,9 @@ function Setup() {
           <div className="lg:col-span-1">
             <div className="sticky top-8 space-y-6">
               {/* Step Progress */}
-              <div className="bg-light-background dark:bg-dark-background border border-light-muted-text/20 dark:border-dark-muted-text/20 rounded-xl shadow-lg p-6">
-                <h3 className="text-lg font-bold text-light-text dark:text-dark-text mb-4 flex items-center">
-                  <CheckSquare className="w-5 h-5 mr-2 text-light-highlight dark:text-dark-highlight" />
+              <div className="bg-background text-foreground border border-border rounded-xl shadow-lg p-6">
+                <h3 className="text-lg font-bold text-foreground mb-4 flex items-center">
+                  <CheckSquare className="w-5 h-5 mr-2 text-primary" />
                   Steps
                 </h3>
                 <div className="space-y-3">
@@ -447,8 +447,8 @@ function Setup() {
                       key={step.id}
                       className={`flex items-center space-x-3 p-3 rounded-lg transition-all duration-300 cursor-pointer border ${
                         currentStep === index
-                          ? "bg-light-highlight/10 dark:bg-dark-highlight/10 border-light-highlight/30 dark:border-dark-highlight/30 shadow-md"
-                          : "border-transparent hover:bg-light-muted-background/50 dark:hover:bg-dark-muted-background/50"
+                          ? "bg-primary/10 border-primary/30 shadow-md"
+                          : "border-transparent hover:bg-muted/50"
                       }`}
                       onClick={() => setCurrentStep(index)}
                     >
@@ -460,7 +460,7 @@ function Setup() {
                         className={`p-1 rounded transition-colors ${
                           completedSteps.has(index)
                             ? "text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300"
-                            : "text-light-muted-text dark:text-dark-muted-text hover:text-light-highlight dark:hover:text-dark-highlight"
+                            : "text-muted-foreground hover:text-primary"
                         }`}
                       >
                         {completedSteps.has(index) ? (
@@ -475,8 +475,8 @@ function Setup() {
                           completedSteps.has(index)
                             ? "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400"
                             : currentStep === index
-                            ? "bg-light-highlight/20 dark:bg-dark-highlight/20 text-light-highlight dark:text-dark-highlight"
-                            : "bg-light-muted-background dark:bg-dark-muted-background text-light-muted-text dark:text-dark-muted-text"
+                            ? "bg-primary/20 text-primary"
+                            : "bg-muted text-muted-foreground"
                         }`}
                       >
                         {step.icon}
@@ -487,12 +487,12 @@ function Setup() {
                           className={`text-sm font-medium ${
                             completedSteps.has(index)
                               ? "text-green-600 dark:text-green-400"
-                              : "text-light-text dark:text-dark-text"
+                              : "text-foreground"
                           }`}
                         >
                           {step.title}
                         </p>
-                        <p className="text-xs text-light-muted-text dark:text-dark-muted-text truncate">
+                        <p className="text-xs text-muted-foreground truncate">
                           {step.estimatedTime}
                         </p>
                       </div>
@@ -502,9 +502,9 @@ function Setup() {
               </div>
 
               {/* Quick Actions */}
-              <div className="bg-light-background dark:bg-dark-background border border-light-muted-text/20 dark:border-dark-muted-text/20 rounded-xl shadow-lg p-6">
-                <h3 className="text-lg font-bold text-light-text dark:text-dark-text mb-4 flex items-center">
-                  <Rocket className="w-5 h-5 mr-2 text-light-highlight dark:text-dark-highlight" />
+              <div className="bg-background text-foreground border border-border rounded-xl shadow-lg p-6">
+                <h3 className="text-lg font-bold text-foreground mb-4 flex items-center">
+                  <Rocket className="w-5 h-5 mr-2 text-primary" />
                   Quick Links
                 </h3>
                 <div className="space-y-3">
@@ -512,53 +512,53 @@ function Setup() {
                     href="http://localhost:5173"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-3 p-3 bg-light-muted-background dark:bg-dark-muted-background rounded-lg hover:bg-light-highlight/10 dark:hover:bg-dark-highlight/10 transition-colors group"
+                    className="flex items-center space-x-3 p-3 bg-muted rounded-lg hover:bg-primary/10 transition-colors group"
                   >
-                    <Monitor className="w-5 h-5 text-light-highlight dark:text-dark-highlight" />
+                    <Monitor className="w-5 h-5 text-primary" />
                     <div className="flex-1">
-                      <p className="text-sm font-medium text-light-text dark:text-dark-text group-hover:text-light-highlight dark:group-hover:text-dark-highlight">
+                      <p className="text-sm font-medium text-foreground group-hover:text-primary">
                         Frontend
                       </p>
-                      <p className="text-xs text-light-muted-text dark:text-dark-muted-text">
+                      <p className="text-xs text-muted-foreground">
                         :5173
                       </p>
                     </div>
-                    <ExternalLink className="w-4 h-4 text-light-muted-text dark:text-dark-muted-text group-hover:text-light-highlight dark:group-hover:text-dark-highlight" />
+                    <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary" />
                   </a>
 
                   <a
                     href={`${backendUrl}/api/health`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-3 p-3 bg-light-muted-background dark:bg-dark-muted-background rounded-lg hover:bg-light-highlight/10 dark:hover:bg-dark-highlight/10 transition-colors group"
+                    className="flex items-center space-x-3 p-3 bg-muted rounded-lg hover:bg-primary/10 transition-colors group"
                   >
-                    <Server className="w-5 h-5 text-light-highlight dark:text-dark-highlight" />
+                    <Server className="w-5 h-5 text-primary" />
                     <div className="flex-1">
-                      <p className="text-sm font-medium text-light-text dark:text-dark-text group-hover:text-light-highlight dark:group-hover:text-dark-highlight">
+                      <p className="text-sm font-medium text-foreground group-hover:text-primary">
                         Backend
                       </p>
-                      <p className="text-xs text-light-muted-text dark:text-dark-muted-text">
+                      <p className="text-xs text-muted-foreground">
                         :3000
                       </p>
                     </div>
-                    <ExternalLink className="w-4 h-4 text-light-muted-text dark:text-dark-muted-text group-hover:text-light-highlight dark:group-hover:text-dark-highlight" />
+                    <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary" />
                   </a>
 
                   <button
                     onClick={checkBackendConnection}
                     disabled={isRefreshing}
-                    className="w-full flex items-center space-x-3 p-3 bg-light-muted-background dark:bg-dark-muted-background rounded-lg hover:bg-light-highlight/10 dark:hover:bg-dark-highlight/10 transition-colors group disabled:opacity-50"
+                    className="w-full flex items-center space-x-3 p-3 bg-muted rounded-lg hover:bg-primary/10 transition-colors group disabled:opacity-50"
                   >
                     <RefreshCw
-                      className={`w-5 h-5 text-light-highlight dark:text-dark-highlight ${
+                      className={`w-5 h-5 text-primary ${
                         isRefreshing ? "animate-spin" : ""
                       }`}
                     />
                     <div className="flex-1 text-left">
-                      <p className="text-sm font-medium text-light-text dark:text-dark-text group-hover:text-light-highlight dark:group-hover:text-dark-highlight">
+                      <p className="text-sm font-medium text-foreground group-hover:text-primary">
                         Refresh Status
                       </p>
-                      <p className="text-xs text-light-muted-text dark:text-dark-muted-text">
+                      <p className="text-xs text-muted-foreground">
                         Check connections
                       </p>
                     </div>
@@ -571,28 +571,28 @@ function Setup() {
           {/* Enhanced Main Content */}
           <div className="lg:col-span-3 space-y-8">
             {/* Current Step */}
-            <div className="bg-light-background dark:bg-dark-background border border-light-muted-text/20 dark:border-dark-muted-text/20 rounded-xl shadow-lg overflow-hidden">
-              <div className="bg-gradient-to-r from-light-highlight/5 to-light-highlight/10 dark:from-dark-highlight/5 dark:to-dark-highlight/10 p-6 border-b border-light-muted-text/20 dark:border-dark-muted-text/20">
+            <div className="bg-background text-foreground border border-border rounded-xl shadow-lg overflow-hidden">
+              <div className="bg-gradient-to-r from-light-highlight/5 to-light-highlight/10 dark:from-dark-highlight/5 dark:to-dark-highlight/10 p-6 border-b border-border">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
-                    <div className="p-3 bg-light-highlight dark:bg-dark-highlight rounded-xl shadow-lg">
+                    <div className="p-3 bg-primary rounded-xl shadow-lg">
                       <div className="text-white">
                         {setupSteps[currentStep]?.icon}
                       </div>
                     </div>
                     <div>
-                      <h2 className="text-2xl font-bold text-light-text dark:text-dark-text">
+                      <h2 className="text-2xl font-bold text-foreground">
                         {setupSteps[currentStep]?.title}
                       </h2>
-                      <p className="text-light-muted-text dark:text-dark-muted-text">
+                      <p className="text-muted-foreground">
                         {setupSteps[currentStep]?.description}
                       </p>
                       <div className="flex items-center space-x-4 mt-2">
-                        <span className="text-sm text-light-muted-text dark:text-dark-muted-text flex items-center">
+                        <span className="text-sm text-muted-foreground flex items-center">
                           <Clock className="w-4 h-4 mr-1" />
                           {setupSteps[currentStep]?.estimatedTime}
                         </span>
-                        <span className="text-sm text-light-muted-text dark:text-dark-muted-text">
+                        <span className="text-sm text-muted-foreground">
                           Step {currentStep + 1} of {setupSteps.length}
                         </span>
                       </div>
@@ -603,7 +603,7 @@ function Setup() {
                     className={`px-6 py-3 rounded-lg font-medium text-sm transition-all duration-300 flex items-center space-x-2 ${
                       completedSteps.has(currentStep)
                         ? "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 border border-green-200 dark:border-green-800"
-                        : "bg-light-highlight dark:bg-dark-highlight text-white hover:opacity-90 shadow-lg"
+                        : "bg-primary text-white hover:opacity-90 shadow-lg"
                     }`}
                   >
                     {completedSteps.has(currentStep) ? (
@@ -636,7 +636,7 @@ function Setup() {
               <button
                 onClick={() => setCurrentStep(Math.max(0, currentStep - 1))}
                 disabled={currentStep === 0}
-                className="flex items-center space-x-2 px-6 py-3 bg-light-muted-background dark:bg-dark-muted-background rounded-lg font-medium text-sm text-light-text dark:text-dark-text transition-all duration-300 hover:bg-light-muted-background/80 dark:hover:bg-dark-muted-background/80 disabled:opacity-50 disabled:cursor-not-allowed border border-light-muted-text/20 dark:border-dark-muted-text/20"
+                className="flex items-center space-x-2 px-6 py-3 bg-muted rounded-lg font-medium text-sm text-foreground transition-all duration-300 hover:bg-muted/80 disabled:opacity-50 disabled:cursor-not-allowed border border-border"
               >
                 <ChevronLeft className="w-4 h-4" />
                 <span>Previous</span>
@@ -649,10 +649,10 @@ function Setup() {
                     onClick={() => setCurrentStep(index)}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
                       currentStep === index
-                        ? "bg-light-highlight dark:bg-dark-highlight scale-125"
+                        ? "bg-primary scale-125"
                         : completedSteps.has(index)
                         ? "bg-green-400 dark:bg-green-500"
-                        : "bg-light-muted-background dark:bg-dark-muted-background hover:bg-light-muted-text/30 dark:hover:bg-dark-muted-text/30"
+                        : "bg-muted hover:bg-muted-foreground/30"
                     }`}
                   />
                 ))}
@@ -665,7 +665,7 @@ function Setup() {
                   )
                 }
                 disabled={currentStep === setupSteps.length - 1}
-                className="flex items-center space-x-2 px-6 py-3 bg-light-highlight dark:bg-dark-highlight text-white rounded-lg font-medium text-sm transition-all duration-300 hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+                className="flex items-center space-x-2 px-6 py-3 bg-primary text-white rounded-lg font-medium text-sm transition-all duration-300 hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
               >
                 <span>Next</span>
                 <ChevronRight className="w-4 h-4" />
@@ -675,10 +675,10 @@ function Setup() {
             {/* Enhanced Environment Variables Section */}
             <div className="space-y-6">
               <div className="text-center">
-                <h3 className="text-2xl font-bold text-light-text dark:text-dark-text mb-2">
+                <h3 className="text-2xl font-bold text-foreground mb-2">
                   Environment Configuration
                 </h3>
-                <p className="text-light-muted-text dark:text-dark-muted-text">
+                <p className="text-muted-foreground">
                   Configure your application settings with these environment
                   variables
                 </p>
@@ -688,18 +688,18 @@ function Setup() {
                 {envVariables.map((envFile, index) => (
                   <div
                     key={index}
-                    className="bg-light-background dark:bg-dark-background border border-light-muted-text/20 dark:border-dark-muted-text/20 rounded-xl shadow-lg overflow-hidden"
+                    className="bg-background text-foreground border border-border rounded-xl shadow-lg overflow-hidden"
                   >
-                    <div className="bg-gradient-to-r from-light-highlight/5 to-light-highlight/10 dark:from-dark-highlight/5 dark:to-dark-highlight/10 p-4 border-b border-light-muted-text/20 dark:border-dark-muted-text/20">
+                    <div className="bg-gradient-to-r from-light-highlight/5 to-light-highlight/10 dark:from-dark-highlight/5 dark:to-dark-highlight/10 p-4 border-b border-border">
                       <div className="flex items-center space-x-3">
-                        <div className="p-2 bg-light-highlight dark:bg-dark-highlight rounded-lg">
+                        <div className="p-2 bg-primary rounded-lg">
                           <div className="text-white">{envFile.icon}</div>
                         </div>
                         <div>
-                          <h4 className="font-bold text-lg text-light-text dark:text-dark-text">
+                          <h4 className="font-bold text-lg text-foreground">
                             {envFile.file}
                           </h4>
-                          <p className="text-sm text-light-muted-text dark:text-dark-muted-text">
+                          <p className="text-sm text-muted-foreground">
                             {envFile.variables.length} variables
                           </p>
                         </div>
@@ -710,10 +710,10 @@ function Setup() {
                         {envFile.variables.map((variable, varIndex) => (
                           <div
                             key={varIndex}
-                            className="p-4 bg-light-muted-background dark:bg-dark-muted-background rounded-lg border border-light-muted-text/10 dark:border-dark-muted-text/10"
+                            className="p-4 bg-muted rounded-lg border border-border/20"
                           >
                             <div className="flex items-center justify-between mb-2">
-                              <code className="text-sm font-bold text-light-highlight dark:text-dark-highlight bg-light-highlight/10 dark:bg-dark-highlight/10 px-2 py-1 rounded">
+                              <code className="text-sm font-bold text-primary bg-primary/10 px-2 py-1 rounded">
                                 {variable.key}
                               </code>
                               <button
@@ -723,21 +723,21 @@ function Setup() {
                                     `env-${index}-${varIndex}`
                                   )
                                 }
-                                className="p-2 hover:bg-light-background dark:hover:bg-dark-background rounded-lg transition-colors border border-light-muted-text/20 dark:border-dark-muted-text/20 group"
+                                className="p-2 hover:bg-background rounded-lg transition-colors border border-border group"
                               >
                                 {copiedCommands.has(
                                   `env-${index}-${varIndex}`
                                 ) ? (
                                   <Check className="w-4 h-4 text-green-500" />
                                 ) : (
-                                  <Copy className="w-4 h-4 text-light-muted-text dark:text-dark-muted-text group-hover:text-light-highlight dark:group-hover:text-dark-highlight" />
+                                  <Copy className="w-4 h-4 text-muted-foreground group-hover:text-primary" />
                                 )}
                               </button>
                             </div>
-                            <code className="text-xs text-light-muted-text dark:text-dark-muted-text block mb-2 bg-light-background dark:bg-dark-background px-2 py-1 rounded">
+                            <code className="text-xs text-muted-foreground block mb-2 bg-background text-foreground px-2 py-1 rounded">
                               = {variable.value}
                             </code>
-                            <p className="text-xs text-light-muted-text dark:text-dark-muted-text">
+                            <p className="text-xs text-muted-foreground">
                               {variable.description}
                             </p>
                           </div>
@@ -789,11 +789,11 @@ function renderStepContent(step, copiedCommands, copyToClipboard) {
       case "start":
         return "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400";
       case "setup":
-        return "bg-light-highlight/10 dark:bg-dark-highlight/10 text-light-highlight dark:text-dark-highlight";
+        return "bg-primary/10 text-primary";
       case "optional":
         return "bg-gray-100 dark:bg-gray-900/30 text-gray-600 dark:text-gray-400";
       default:
-        return "bg-light-muted-background dark:bg-dark-muted-background text-light-text dark:text-dark-text";
+        return "bg-muted text-foreground";
     }
   };
 
@@ -851,26 +851,26 @@ function renderStepContent(step, copiedCommands, copyToClipboard) {
             {step.items.map((item, index) => (
               <div
                 key={index}
-                className="bg-light-muted-background dark:bg-dark-muted-background border border-light-muted-text/20 dark:border-dark-muted-text/20 rounded-xl p-6 hover:shadow-lg transition-shadow"
+                className="bg-muted border border-border rounded-xl p-6 hover:shadow-lg transition-shadow"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-start space-x-4 flex-1">
-                    <div className="p-3 bg-light-highlight dark:bg-dark-highlight rounded-lg">
+                    <div className="p-3 bg-primary rounded-lg">
                       <div className="text-white">{item.icon}</div>
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center space-x-3 mb-2">
-                        <h4 className="font-bold text-lg text-light-text dark:text-dark-text">
+                        <h4 className="font-bold text-lg text-foreground">
                           {item.name}
                         </h4>
-                        <span className="px-3 py-1 bg-light-highlight/10 dark:bg-dark-highlight/10 text-light-highlight dark:text-dark-highlight text-sm font-medium rounded-full">
+                        <span className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
                           {item.version}
                         </span>
                       </div>
-                      <p className="text-light-muted-text dark:text-dark-muted-text mb-3">
+                      <p className="text-muted-foreground mb-3">
                         {item.description}
                       </p>
-                      <code className="bg-light-background dark:bg-dark-background px-3 py-2 rounded-lg text-sm font-mono border border-light-muted-text/20 dark:border-dark-muted-text/20 inline-block">
+                      <code className="bg-background text-foreground px-3 py-2 rounded-lg text-sm font-mono border border-border inline-block">
                         {item.command}
                       </code>
                     </div>
@@ -879,7 +879,7 @@ function renderStepContent(step, copiedCommands, copyToClipboard) {
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-2 px-6 py-3 bg-light-highlight dark:bg-dark-highlight text-white rounded-lg font-medium text-sm hover:opacity-90 transition-opacity shadow-lg"
+                    className="flex items-center space-x-2 px-6 py-3 bg-primary text-white rounded-lg font-medium text-sm hover:opacity-90 transition-opacity shadow-lg"
                   >
                     <Download className="w-4 h-4" />
                     <span>Download</span>
@@ -915,21 +915,21 @@ function renderStepContent(step, copiedCommands, copyToClipboard) {
             {step.verifications.map((verification, index) => (
               <div
                 key={index}
-                className="bg-light-muted-background dark:bg-dark-muted-background border border-light-muted-text/20 dark:border-dark-muted-text/20 rounded-xl p-6 hover:shadow-lg transition-shadow"
+                className="bg-muted border border-border rounded-xl p-6 hover:shadow-lg transition-shadow"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4 flex-1">
                     <div className="flex items-center space-x-3">
                       {getStatusIcon(verification.status)}
                       <div>
-                        <h4 className="font-bold text-light-text dark:text-dark-text">
+                        <h4 className="font-bold text-foreground">
                           {verification.name}
                         </h4>
-                        <p className="text-sm text-light-muted-text dark:text-dark-muted-text">
+                        <p className="text-sm text-muted-foreground">
                           {verification.description}
                         </p>
                         {verification.url && (
-                          <code className="text-xs bg-light-background dark:bg-dark-background px-2 py-1 rounded mt-2 inline-block font-mono border border-light-muted-text/20 dark:border-dark-muted-text/20">
+                          <code className="text-xs bg-background text-foreground px-2 py-1 rounded mt-2 inline-block font-mono border border-border">
                             {verification.url}
                           </code>
                         )}
@@ -956,7 +956,7 @@ function renderStepContent(step, copiedCommands, copyToClipboard) {
                         href={verification.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center space-x-2 px-4 py-2 bg-light-highlight dark:bg-dark-highlight text-white rounded-lg font-medium text-sm hover:opacity-90 transition-opacity"
+                        className="flex items-center space-x-2 px-4 py-2 bg-primary text-white rounded-lg font-medium text-sm hover:opacity-90 transition-opacity"
                       >
                         <Play className="w-4 h-4" />
                         <span>Test</span>

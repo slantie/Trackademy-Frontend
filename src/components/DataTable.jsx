@@ -10,8 +10,7 @@ import {
 import { Edit, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const DataTable = ({ columns, data, onEdit, onDelete }) => {
-  // Memoize the header to prevent re-renders unless columns change
+const DataTable = ({ columns, data, onEdit, onDelete, onRowClick }) => {
   const tableHeader = React.useMemo(
     () => (
       <TableHeader>
@@ -31,16 +30,19 @@ const DataTable = ({ columns, data, onEdit, onDelete }) => {
   );
 
   return (
-    <div className="rounded-md border border-light-muted-text/20 dark:border-dark-muted-text/20 bg-light-background dark:bg-dark-background">
+    <div className="rounded-md border border-border bg-background text-foreground">
       <Table>
         {tableHeader}
         <TableBody>
           {data.length > 0 ? (
             data.map((row) => (
-              <TableRow key={row.id}>
+              <TableRow
+                key={row.id}
+                onClick={() => onRowClick && onRowClick(row)}
+                className={onRowClick ? "cursor-pointer" : ""}
+              >
                 {columns.map((column) => (
                   <TableCell key={column.field}>
-                    {/* Check if a custom render function is provided */}
                     {column.renderCell
                       ? column.renderCell({ row })
                       : row[column.field]}
@@ -53,7 +55,10 @@ const DataTable = ({ columns, data, onEdit, onDelete }) => {
                         <Button
                           variant="ghost"
                           size="icon"
-                          onClick={() => onEdit(row)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onEdit(row);
+                          }}
                         >
                           <Edit className="h-4 w-4" />
                           <span className="sr-only">Edit</span>
@@ -63,7 +68,10 @@ const DataTable = ({ columns, data, onEdit, onDelete }) => {
                         <Button
                           variant="ghost"
                           size="icon"
-                          onClick={() => onDelete(row)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onDelete(row);
+                          }}
                         >
                           <Trash2 className="h-4 w-4 text-red-500" />
                           <span className="sr-only">Delete</span>
@@ -78,7 +86,7 @@ const DataTable = ({ columns, data, onEdit, onDelete }) => {
             <TableRow>
               <TableCell
                 colSpan={columns.length + (onEdit || onDelete ? 1 : 0)}
-                className="h-24 text-center text-light-muted-text dark:text-dark-muted-text"
+                className="h-24 text-center text-muted-foreground"
               >
                 No results found.
               </TableCell>
